@@ -23,5 +23,12 @@
   "bugs": {
     "url": "https://github.com/harichandanmohanty/FOOD_KART/issues"
   },
-  "homepage": "https://github.com/harichandanmohanty/FOOD_KART#readme"
+  "homepage": "https://github.com/harichandanmohanty/FOOD_KART#readme",
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  },
+  "dependencies": {
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  }
 }
