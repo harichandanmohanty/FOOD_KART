@@ -1,0 +1,23 @@
+.nav-element {
+    display: inline-block;
+    margin-right: 20px;
+    font-size: 18px;
+    color: #496bbc;
+    text-decoration: none;
+}
+
+.restaurant-list {
+    display: flex;
+    flex-wrap: inherit;
+    justify-content: flex-start;
+    padding: 20px;
+}
+
+.restaurant-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px;
+    width: 300px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}

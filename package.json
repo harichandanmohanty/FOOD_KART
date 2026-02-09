@@ -2,7 +2,6 @@
   "name": "food_kart",
   "version": "1.0.0",
   "description": "A food kart with restaurant list built with react, JSX and with props",
-  "main": "App.js",
   "scripts": {
     "test": "jest"
   },
