@@ -1,0 +1,27 @@
+{
+  "name": "food_kart",
+  "version": "1.0.0",
+  "description": "A food kart with restaurant list built with react, JSX and with props",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harichandanmohanty/FOOD_KART.git"
+  },
+  "keywords": [
+    "React",
+    "JavaScript",
+    "JSX",
+    "Props",
+    "Food",
+    "Kart"
+  ],
+  "author": "Harichandan Mohanty",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/harichandanmohanty/FOOD_KART/issues"
+  },
+  "homepage": "https://github.com/harichandanmohanty/FOOD_KART#readme"
+}
