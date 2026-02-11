@@ -1,45 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import data from "./mockData";
 
-const data = {
-  dataList: [
-    {
-      info: {
-        id: "643832",
-        name: "WeFit - Protein Bowls, Salads & Sandwiches",
-        cuisines: ["Healthy Food", "Salads", "Keto", "Snacks"],
-      },
-    },
-    {
-      info: {
-        id: "533773",
-        name: "Third Wave Coffee",
-        cuisines: ["Beverages", "Bakery", "Continental"],
-      },
-    },
-    {
-      info: {
-        id: "681612",
-        name: "LeanCrust Pizza- ThinCrust Experts",
-        cuisines: ["Pizzas", "Italian", "Desserts"],
-      },
-    },
-    {
-      info: {
-        id: "1201253",
-        name: "1881 Dum House: Lucknow's Legacy",
-        cuisines: ["North Indian", "Biryani", "Awadhi"],
-      },
-    },
-    {
-      info: {
-        id: "426730",
-        name: "Theobroma",
-        cuisines: ["Desserts", "Bakery", "Beverages"],
-      },
-    },
-  ],
-};
 
 const HeaderComponent = () => {
   return (
@@ -74,7 +36,7 @@ const BodyComponent = () => {
     <div>
       <h2>Our Restaurants</h2>
       <div className="restaurant-list" style={{ backgroundColor: "#d2d5c8" }}>
-        {data.dataList.map((restaurant) => (
+        {data.data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants.map((restaurant) => (
           <RestaurantComponent
             key={restaurant.info.id}
             name={restaurant.info.name}

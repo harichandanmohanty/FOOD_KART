@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "A food kart with restaurant list built with react, JSX and with props",
   "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "jest"
   },
   "repository": {
