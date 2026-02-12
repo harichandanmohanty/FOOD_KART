@@ -7,7 +7,7 @@ const HeaderComponent = () => {
           Home
         </a>
         <a href="#menu" className="nav-element">
-          Menu
+          About
         </a>
         <a href="#contact" className="nav-element">
           Contact

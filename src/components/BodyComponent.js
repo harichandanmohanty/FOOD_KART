@@ -62,6 +62,8 @@ const BodyComponent = () => {
             name={restaurant.info.name}
             description={restaurant.info.cuisines.join(", ")}
             avgRating={restaurant.info.avgRating}
+            slaTime={restaurant.info.sla.slaString}
+            costForTwo={restaurant.info.costForTwo}
           />
         ))}
       </div>
