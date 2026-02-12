@@ -1,17 +1,19 @@
+import {Link} from "react-router-dom";
+
 const HeaderComponent = () => {
   return (
     <header>
       <h1>Welcome to Food Kart</h1>
       <nav>
-        <a href="/" className="nav-element">
+        <Link to="/" className="nav-element">
           Home
-        </a>
-        <a href="/about" className="nav-element">
+        </Link>
+        <Link to="/about" className="nav-element">
           About
-        </a>
-        <a href="/contact" className="nav-element">
+        </Link>
+        <Link to="/contact" className="nav-element">
           Contact
-        </a>
+        </Link>
       </nav>
     </header>
   );
