@@ -4,7 +4,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 const BodyComponent = () => {
-  const [data, setData] = useState({});
+  const [restaurants, setRestaurants] = useState([]);
+  const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
   useEffect(() => {
     const response = {
@@ -255,9 +256,18 @@ const BodyComponent = () => {
         },
       },
     };
-    setInterval(() => {
-      setData(response);
+    setTimeout(() => {
+      setRestaurants(
+        response.data.data.cards[1].card.card.gridElements.infoWithStyle
+          .restaurants,
+      );
+      setFilteredRestaurant(
+        response.data.data.cards[1].card.card.gridElements.infoWithStyle
+          .restaurants,
+      );
+      console.log("filteredSet" + filteredRestaurant);
     }, 1000);
+    console.log("filtered" + filteredRestaurant);
     // Commented because of CORS issue.
     // fetch("https://namastedev.com/api/v1/listRestaurants")
     //   .then((response) => response.json())
@@ -270,23 +280,42 @@ const BodyComponent = () => {
     //   });
   }, []);
 
-  if (!data.data) {
+  if (restaurants.length == 0 || !restaurants) {
     return <div>Loading...</div>;
   }
 
   return (
     <div>
       <h2>Our Restaurants</h2>
+      <button
+        onClick={() => {
+          let filteredData = restaurants.filter(
+            (res) => res.info.avgRating >= 4.5,
+          );
+          if (filteredRestaurant.length !== restaurants.length) {
+            filteredData = [...restaurants];
+          } else {
+            filteredData = restaurants.filter(
+              (res) => res.info.avgRating >= 4.5,
+            );
+          }
+          console.log(filteredData);
+          setFilteredRestaurant(filteredData);
+        }}
+      >
+        {filteredRestaurant.length !== restaurants.length
+          ? "All"
+          : "Highly Rated > 4.5"}
+      </button>
       <div className="restaurant-list" style={{ backgroundColor: "#d2d5c8" }}>
-        {data.data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants.map(
-          (restaurant) => (
-            <RestaurantComponent
-              key={restaurant.info.id}
-              name={restaurant.info.name}
-              description={restaurant.info.cuisines.join(", ")}
-            />
-          ),
-        )}
+        {filteredRestaurant.map((restaurant) => (
+          <RestaurantComponent
+            key={restaurant.info.id}
+            name={restaurant.info.name}
+            description={restaurant.info.cuisines.join(", ")}
+            avgRating={restaurant.info.avgRating}
+          />
+        ))}
       </div>
     </div>
   );
