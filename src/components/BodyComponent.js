@@ -1,7 +1,8 @@
 import RestaurantComponent from "./RestaurantComponent";
-//import data from "../../mockData";
 import { useEffect } from "react";
 import { useState } from "react";
+import constants from "../../utils/constants";
+import { Link } from "react-router-dom";
 
 const BodyComponent = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -12,9 +13,7 @@ const BodyComponent = () => {
   }, []);
 
   function fetchData() {
-    fetch(
-      "https://corsproxy.io/?url=https://namastedev.com/api/v1/listRestaurants",
-    )
+    fetch(constants.restaurantsAPI)
       .then((response) => response.json())
       .then((result) => {
         console.log("Fetched Restaurant Data:", result);
@@ -32,7 +31,9 @@ const BodyComponent = () => {
       });
   }
 
-  return (restaurants.length == 0 || !restaurants) ? (<div>Loading...</div>):(
+  return restaurants.length == 0 || !restaurants ? (
+    <div id="loader">Loading...</div>
+  ) : (
     <div>
       <h2>Our Restaurants</h2>
       <button
@@ -57,14 +58,15 @@ const BodyComponent = () => {
       </button>
       <div className="restaurant-list" style={{ backgroundColor: "#d2d5c8" }}>
         {filteredRestaurant.map((restaurant) => (
-          <RestaurantComponent
-            key={restaurant.info.id}
-            name={restaurant.info.name}
-            description={restaurant.info.cuisines.join(", ")}
-            avgRating={restaurant.info.avgRating}
-            slaTime={restaurant.info.sla.slaString}
-            costForTwo={restaurant.info.costForTwo}
-          />
+          <Link to={"/menu/" + restaurant.info.id} key={restaurant.info.id}>
+            <RestaurantComponent
+              name={restaurant.info.name}
+              description={restaurant.info.cuisines.join(", ")}
+              avgRating={restaurant.info.avgRating}
+              slaTime={restaurant.info.sla.slaString}
+              costForTwo={restaurant.info.costForTwo}
+            />
+          </Link>
         ))}
       </div>
     </div>
