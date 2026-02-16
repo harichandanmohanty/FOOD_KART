@@ -34,9 +34,9 @@ const BodyComponent = () => {
   return restaurants.length == 0 || !restaurants ? (
     <div id="loader">Loading...</div>
   ) : (
-    <div>
+    <div className="res-body">
       <h2>Our Restaurants</h2>
-      <button
+      <button className="filter-button"
         onClick={() => {
           let filteredData = restaurants.filter(
             (res) => res.info.avgRating >= 4.5,
@@ -56,15 +56,16 @@ const BodyComponent = () => {
           ? "All"
           : "Highly Rated > 4.5"}
       </button>
-      <div className="restaurant-list" style={{ backgroundColor: "#d2d5c8" }}>
+      <div className="restaurant-list">
         {filteredRestaurant.map((restaurant) => (
-          <Link to={"/menu/" + restaurant.info.id} key={restaurant.info.id}>
+          <Link to={"/menu/" + restaurant.info.id} key={restaurant.info.id} className="restaurant-link">
             <RestaurantComponent
               name={restaurant.info.name}
               description={restaurant.info.cuisines.join(", ")}
               avgRating={restaurant.info.avgRating}
               slaTime={restaurant.info.sla.slaString}
               costForTwo={restaurant.info.costForTwo}
+              imageId={restaurant.info.cloudinaryImageId}
             />
           </Link>
         ))}

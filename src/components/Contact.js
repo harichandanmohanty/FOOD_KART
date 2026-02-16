@@ -1,9 +1,13 @@
 const Contact = () => {
     return (
-        <div>
-            <h2>Contact Us</h2>
-            <p>We’d love to hear from you! Whether you have a question, feedback, partnership inquiry, or need support, feel free to reach out using any of the options below.</p>
-            <p>Contact : 000002222333</p>
+        <div className="contact">
+            <h2 className="contact-title"> Contact Us</h2>
+            <p className="contact-description">If you have any questions, feedback, or need assistance, please feel free to reach out to us:</p>
+            <ul className="contact-info">
+                <li className="email">Email: <a href="mailto:contact@foodkart.com">contact@foodkart.com</a></li>
+                <li className="phone-number">Phone: 000002222333</li>
+            </ul> 
+            <p>We look forward to hearing from you!</p>
         </div>
     );
 };
