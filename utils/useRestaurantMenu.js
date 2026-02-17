@@ -9,19 +9,14 @@ const useRestaurantMenu = (restaurantId) => {
   }, []);
 
   async function fetchMenu() {
-    let menu = [];
+    let listOfItemCategory = [];
     await fetch(constants.restaurantMenu + restaurantId)
       .then((response) => response.json())
       .then((result) => {
         result.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards?.forEach(
           (element) => {
-            if (Object.keys(element).length !== 0) {
-              element.card.card.itemCards.forEach((card) => {
-                menu.push({
-                  id: card?.card?.info?.id,
-                  name: card?.card?.info?.name,
-                });
-              });
+            if (Object.keys(element).length !== 0 && element.card?.card["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory") {
+                listOfItemCategory.push(element.card.card);
             }
           },
         );
@@ -29,8 +24,8 @@ const useRestaurantMenu = (restaurantId) => {
       .catch((error) =>
         console.error("Error fetching restaurant menu:", error),
       );
-    console.log(menu);
-    return menu;
+    console.log(listOfItemCategory);
+    return listOfItemCategory;
   }
 
   return restaurantMenu;
