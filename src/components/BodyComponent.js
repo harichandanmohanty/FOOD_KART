@@ -31,34 +31,34 @@ const BodyComponent = () => {
       });
   }
 
+  function onClickFilterButton() {
+    let filteredData = restaurants.filter((res) => res.info.avgRating >= 4.5);
+    if (filteredRestaurant.length !== restaurants.length) {
+      filteredData = [...restaurants];
+    } else {
+      filteredData = restaurants.filter((res) => res.info.avgRating >= 4.5);
+    }
+    console.log(filteredData);
+    setFilteredRestaurant(filteredData);
+  }
+
   return restaurants.length == 0 || !restaurants ? (
     <div id="loader">Loading...</div>
   ) : (
     <div className="res-body">
       <h2>Our Restaurants</h2>
-      <button className="filter-button"
-        onClick={() => {
-          let filteredData = restaurants.filter(
-            (res) => res.info.avgRating >= 4.5,
-          );
-          if (filteredRestaurant.length !== restaurants.length) {
-            filteredData = [...restaurants];
-          } else {
-            filteredData = restaurants.filter(
-              (res) => res.info.avgRating >= 4.5,
-            );
-          }
-          console.log(filteredData);
-          setFilteredRestaurant(filteredData);
-        }}
-      >
+      <button className="filter-button" onClick={onClickFilterButton}>
         {filteredRestaurant.length !== restaurants.length
           ? "All"
           : "Highly Rated > 4.5"}
       </button>
       <div className="restaurant-list">
         {filteredRestaurant.map((restaurant) => (
-          <Link to={"/menu/" + restaurant.info.id} key={restaurant.info.id} className="restaurant-link">
+          <Link
+            to={"/menu/" + restaurant.info.id}
+            key={restaurant.info.id}
+            className="restaurant-link"
+          >
             <RestaurantComponent
               name={restaurant.info.name}
               description={restaurant.info.cuisines.join(", ")}

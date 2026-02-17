@@ -13,7 +13,8 @@ const RestaurantComponent = (props) => {
         className="restaurant-image"
         onError={(e) => {
           e.target.onerror = null;
-          e.target.src = "https://corsproxy.io/?url=https://loremflickr.com/400/300/restaurant";
+          e.target.src =
+            "https://corsproxy.io/?url=https://loremflickr.com/400/300/restaurant";
         }}
       />
       <div className="res-info">
