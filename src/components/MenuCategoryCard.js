@@ -9,7 +9,7 @@ const MenuCategoryCard = ({ category }) => {
 
   return (
     <div key={category.title}>
-      <h3 className="category-title" onClick={onClickCategory}>{category.title}<span>{categoryClicked ? "-" : "+"}</span></h3>
+      <h3 className="category-title" onClick={onClickCategory}>{category.title + `${category.itemCards.length > 0 ? ` (${category.itemCards.length})` : ''}`}<span>{categoryClicked ? "-" : "+"}</span></h3>
       {categoryClicked &&  <div className="menu-items-container">
         {category.itemCards.length > 0 &&
           category.itemCards.map((itemCard) => (
