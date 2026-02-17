@@ -3,10 +3,14 @@ import { useEffect } from "react";
 import { useState } from "react";
 import constants from "../../utils/constants";
 import { Link } from "react-router-dom";
+import restaurantWithPromotedLevel from "./RestaurantPromotedComponent";
 
 const BodyComponent = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
+
+  const RestaurantPromotedComponent =
+    restaurantWithPromotedLevel(RestaurantComponent);
 
   useEffect(() => {
     fetchData();
@@ -59,14 +63,25 @@ const BodyComponent = () => {
             key={restaurant.info.id}
             className="restaurant-link"
           >
-            <RestaurantComponent
-              name={restaurant.info.name}
-              description={restaurant.info.cuisines.join(", ")}
-              avgRating={restaurant.info.avgRating}
-              slaTime={restaurant.info.sla.slaString}
-              costForTwo={restaurant.info.costForTwo}
-              imageId={restaurant.info.cloudinaryImageId}
-            />
+            {restaurant.info.veg ? (
+              <RestaurantPromotedComponent
+                name={restaurant.info.name}
+                description={restaurant.info.cuisines.join(", ")}
+                avgRating={restaurant.info.avgRating}
+                slaTime={restaurant.info.sla.slaString}
+                costForTwo={restaurant.info.costForTwo}
+                imageId={restaurant.info.cloudinaryImageId}
+              />
+            ) : (
+              <RestaurantComponent
+                name={restaurant.info.name}
+                description={restaurant.info.cuisines.join(", ")}
+                avgRating={restaurant.info.avgRating}
+                slaTime={restaurant.info.sla.slaString}
+                costForTwo={restaurant.info.costForTwo}
+                imageId={restaurant.info.cloudinaryImageId}
+              />
+            )}
           </Link>
         ))}
       </div>
