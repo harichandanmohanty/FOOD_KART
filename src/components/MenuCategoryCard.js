@@ -1,16 +1,13 @@
 import { useState } from "react";
 
-const MenuCategoryCard = ({ category }) => {
-  const [categoryClicked, setCategoryClicked] = useState(false);
-
-  function onClickCategory() {
-    setCategoryClicked((prev) => !prev);
-  }
+const MenuCategoryCard = ({ category, isCategorySelected, onClickCategory }) => {
 
   return (
     <div key={category.title}>
-      <h3 className="category-title" onClick={onClickCategory}>{category.title + `${category.itemCards.length > 0 ? ` (${category.itemCards.length})` : ''}`}<span>{categoryClicked ? "-" : "+"}</span></h3>
-      {categoryClicked &&  <div className="menu-items-container">
+      <h3 className="category-title" onClick={() => {
+        onClickCategory();
+      }}>{category.title + `${category.itemCards.length > 0 ? ` (${category.itemCards.length})` : ''}`}<span>{isCategorySelected ? "-" : "+"}</span></h3>
+      {isCategorySelected &&  <div className="menu-items-container">
         {category.itemCards.length > 0 &&
           category.itemCards.map((itemCard) => (
             <div className="menu-item-card" key={itemCard.card.info.id}>
