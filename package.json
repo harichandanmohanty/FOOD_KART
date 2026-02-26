@@ -4,7 +4,7 @@
   "description": "A food kart with restaurant list built with react, JSX and with props",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html",
+    "build": "parcel build index.html --public-url /FOOD_KART/",
     "test": "jest"
   },
   "repository": {
@@ -24,7 +24,7 @@
   "bugs": {
     "url": "https://github.com/harichandanmohanty/FOOD_KART/issues"
   },
-  "homepage": "https://harichandanmohanty.github.io/FOOD_KART/",
+  "homepage": "https://harichandanmohanty.github.io/FOOD_KART",
   "devDependencies": {
     "parcel": "^2.16.4"
   },
