@@ -1,6 +1,10 @@
 import {Link} from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const HeaderComponent = () => {
+
+  const cartItems = useSelector((store) => store.cart.items);
+
   return (
     <header>
       <h1>Welcome to Food Kart</h1>
@@ -13,6 +17,9 @@ const HeaderComponent = () => {
         </Link>
         <Link to="/contact" className="nav-element">
           Contact
+        </Link>
+        <Link to="/cart" className="nav-element">
+          Cart ({cartItems.length} items)
         </Link>
       </nav>
     </header>

@@ -1,6 +1,13 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../utils/cartSlice";
 
 const MenuCategoryCard = ({ category, isCategorySelected, onClickCategory }) => {
+  const dispatch = useDispatch();
+
+  function handleAddItem(item) {
+    dispatch(addItem(item));
+  }
 
   return (
     <div key={category.title}>
@@ -25,7 +32,7 @@ const MenuCategoryCard = ({ category, isCategorySelected, onClickCategory }) => 
                   alt={itemCard.card.info.name}
                   className="item-image"
                 />
-                <button className="add-button">ADD</button>
+                <button className="add-button" onClick={() => handleAddItem(itemCard)}>ADD</button>
               </div>
             </div>
           ))}
