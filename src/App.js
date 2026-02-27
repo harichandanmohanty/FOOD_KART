@@ -3,7 +3,7 @@ import HeaderComponent from "./components/HeaderComponent";
 import BodyComponent from "./components/BodyComponent";
 import FooterComponent from "./components/FooterComponent";
 import Cart from "./components/Store";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { createBrowserRouter,createHashRouter, RouterProvider, Outlet } from "react-router-dom";
 import ErrorComponent from "./components/ErrorComponent";
 import { Suspense, lazy } from "react";
 
@@ -28,7 +28,7 @@ const App = () => {
   );
 };
 
-const appRouter = createBrowserRouter([
+const appRouter = createHashRouter([
   {
     path: "/",
     element: <App />,
