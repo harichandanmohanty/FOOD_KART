@@ -4,7 +4,7 @@
   "description": "A food kart with restaurant list built with react, JSX and with props",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html --public-url /FOOD_KART/",
+    "build": "parcel build index.html --public-url ./",
     "test": "jest"
   },
   "repository": {
